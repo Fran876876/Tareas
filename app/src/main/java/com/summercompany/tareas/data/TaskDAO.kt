@@ -1,8 +1,9 @@
-package com.summercompany.tareas
+package com.summercompany.tareas.data
 
 import android.content.ContentValues
 import android.content.Context
 import android.util.Log
+import com.summercompany.tareas.utils.DatabaseManager
 
 class TaskDAO(context: Context) {
 
@@ -126,7 +127,8 @@ class TaskDAO(context: Context) {
             var taskList: MutableList<Task> = mutableListOf()
 
             try{
-                val cursor = db.query(Task.TABLE_NAME,   // The table to query
+                val cursor = db.query(
+                    Task.TABLE_NAME,   // The table to query
                     projection,             // The array of columns to return (pass null to get all)
                     null,              // The columns for the WHERE clause
                     null,          // The values for the WHERE clause

@@ -1,9 +1,10 @@
-package com.summercompany.tareas
+package com.summercompany.tareas.utils
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import com.summercompany.tareas.data.Task
 
 class DatabaseManager (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_NAME){
 

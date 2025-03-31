@@ -1,4 +1,4 @@
-package com.summercompany.tareas
+package com.summercompany.tareas.data
 
 class Task (
     var id: Long,
