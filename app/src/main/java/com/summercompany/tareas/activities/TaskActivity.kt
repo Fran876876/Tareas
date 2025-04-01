@@ -9,9 +9,14 @@ import com.summercompany.tareas.data.TaskDAO
 
 class TaskActivity : AppCompatActivity(){
 
-    lateinit var  binding: ActivityTaskBinding
+    companion object{
+        const val TASK_ID = "TASK_ID"
+    }
 
+
+    lateinit var  binding: ActivityTaskBinding
     lateinit var taskDAO: TaskDAO
+    lateinit var task: Task
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +30,16 @@ class TaskActivity : AppCompatActivity(){
             insets
         }
 
+        val id = intent.getLongExtra(TASK_ID, -1L)
+
         taskDAO= TaskDAO(this)
+
+        if(id != -1L){
+            task = taskDAO.findById(id)!!
+            binding.titleEditText.setText(task.title)
+        } else {
+            task = Task(-1L, "")
+        }
 
         binding.saveButton.setOnClickListener{
             val title = binding.titleEditText.text.toString()

@@ -46,7 +46,7 @@ class TaskDAO(context: Context) {
         }
 
         try {
-            val updatedRows = db.update("DATABASE", "Updated task with id: ${task.id}")
+            val updatedRows = db.update(Task.TABLE_NAME,values,"${Task.COLUMN_NAME_ID} = ${task.id}", null)
             Log.i("DATABASE", "Inserted task with id: $task.id")
         } catch (e: Exception) {
             e.printStackTrace()
@@ -68,7 +68,7 @@ class TaskDAO(context: Context) {
         } finally {
             db.close()
         }
-
+    }
         fun findById(id: Long): Task? {
             val db = databaseManager.readableDatabase
 
@@ -155,7 +155,7 @@ class TaskDAO(context: Context) {
 
 
 
-    }
+
 }
 
 
